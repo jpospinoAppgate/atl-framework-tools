@@ -7,6 +7,9 @@ module.exports.burnDownTemplate = () => `<!DOCTYPE html>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <script type="text/javascript" src="data.json"></script>
     <script>
+        var onClick = function () {
+            location = window['location']
+        }
         var load = function () {
             var ctx = document.getElementById('subTaskChart').getContext('2d');
             var ctx2 = document.getElementById('storyChart').getContext('2d');
@@ -82,6 +85,7 @@ module.exports.burnDownTemplate = () => `<!DOCTYPE html>
     <div class="col-sm-12">
         <h1>{{sprintName}}</h1>
         <p><small class="text-muted">{{sprintGoal}}</small></p>
+        <button class="btn btn-primary float-left" onclick="onClick()"><span class="glyphicon glyphicon-refresh"></span> Refresh</button>
     </div>
   </div>
   </div>
@@ -90,7 +94,7 @@ module.exports.burnDownTemplate = () => `<!DOCTYPE html>
   <div class="row">
     <div class="col-sm-4">
         <div class="card-body card-container ">
-            <h5 class="card-title">Subtask Burn down chart</h5>
+            <h5 class="card-title">SubTask Burn down chart</h5>
             <p class="card-text">Sprint Rate: {{subTaskRate}}</p>
             <p class="card-text">Rate diff: {{subTaskRateDiff}}</p>
         </div>
@@ -104,7 +108,7 @@ module.exports.burnDownTemplate = () => `<!DOCTYPE html>
   <div class="row">
         <div class="col-sm-4">
             <div class="card-body">
-                <h5 class="card-title">Subtask Burn down chart</h5>
+                <h5 class="card-title">Story Burn down chart</h5>
                 <p class="card-text">Sprint Rate: {{storyRate}}</p>
                 <p class="card-text">Rate diff: {{storyRateDiff}}</p>
             </div>
@@ -113,8 +117,7 @@ module.exports.burnDownTemplate = () => `<!DOCTYPE html>
     <canvas id="storyChart"></canvas>
     </div>
     </div>
-    </div>
-  
+    </div>  
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
